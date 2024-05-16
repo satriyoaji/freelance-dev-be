@@ -5,7 +5,8 @@ export const FormCreate = z.object({
     .regex(/^[A-Za-z .,'!&]+$/, "Name must be alphabetical characters only")
     .min(3, "Name must be at least 3 characters")
     .max(32, "Name must be at most 32 characters"),
-  phone: z.number()
+  phone: z.string({ required_error: 'phone number is required' })
+    .regex(/^[0-9]+$/, "Phone must be numerical characters only")
     .min(11, "Phone number must be at least 11 digit")
     .max(13, "Phone number must be at most 13 digit"),
   address: z.optional(z.string()),
